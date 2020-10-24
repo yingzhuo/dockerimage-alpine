@@ -15,7 +15,7 @@ RUN addgroup -g 1001 -S app && \
     mkdir -p /home/app/data/ && \
     mkdir -p /home/app/bin/ && \
     mkdir -p /home/app/log/ && \
-    chown -R /home/app/ && \
+    chown -R app:app /home/app/ && \
     rm -rf /var/cache/apk/*
 
 ENTRYPOINT ["docktool", "sleep"]
