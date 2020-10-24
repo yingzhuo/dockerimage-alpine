@@ -6,7 +6,7 @@ COPY --from=yingzhuo/docktool /bin/docktool /usr/local/bin/docktool
 USER root:root
 
 RUN addgroup -g 1001 -S app && \
-    adduser  -u 1001 -S app -G app -s /bin/sh &&
+    adduser  -u 1001 -S app -G app -s /bin/sh && \
     chmod +x /usr/local/bin/gosu && \
     chmod +x /usr/local/bin/docktool && \
     mkdir -p /home/app/tmp/ && \
