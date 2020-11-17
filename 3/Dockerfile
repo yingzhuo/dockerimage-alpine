@@ -5,21 +5,17 @@ COPY --from=yingzhuo/docktool /bin/docktool /usr/local/bin/docktool
 
 USER root:root
 
-ENV PATH=$PATH:/home/app/bin:/home/app/sbin
-
 RUN addgroup -g 1001 -S app && \
-    adduser  -u 1001 -S app -G app -s /bin/sh && \
+    adduser  -u 1001 -S app -G app -s /bin/sh --no-create-home --disabled-password && \
+    addgroup -S app root && \
     chmod +x /usr/local/bin/gosu && \
     chmod +x /usr/local/bin/docktool && \
-    mkdir -p /home/app/tmp/ && \
-    mkdir -p /home/app/config/ && \
-    mkdir -p /home/app/data/ && \
-    mkdir -p /home/app/bin/ && \
-    mkdir -p /home/app/sbin/ && \
-    mkdir -p /home/app/log/ && \
-    rm -rf /var/log && \
-    chown -R app:app /home/app/ && \
-    ln -sf /home/app/log/ /var/log && \
+    mkdir -p /var/data && \
+    chmod g+x /opt && \
+    chmod g+x /var/log && \
+    chmod g+x /var/data && \
+    chmod g+x /var/run && \
+    chmod g+x /run && \
     rm -rf /var/cache/apk/*
 
 ENTRYPOINT ["docktool", "sleep"]
