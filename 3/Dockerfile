@@ -11,11 +11,11 @@ RUN addgroup -g 1001 -S app && \
     chmod +x /usr/local/bin/gosu && \
     chmod +x /usr/local/bin/docktool && \
     mkdir -p /var/data && \
-    chmod g+x /opt && \
-    chmod g+x /var/log && \
-    chmod g+x /var/data && \
-    chmod g+x /var/run && \
-    chmod g+x /run && \
+    chmod g+w /opt && \
+    chmod g+w /var/log && \
+    chmod g+w /var/data && \
+    chmod g+w /var/run && \
+    chmod g+w /run && \
     rm -rf /var/cache/apk/*
 
 ENTRYPOINT ["docktool", "sleep"]
