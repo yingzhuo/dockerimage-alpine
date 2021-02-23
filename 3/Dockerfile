@@ -1,4 +1,4 @@
-FROM alpine:3
+FROM alpine:3.13.2
 
 COPY --from=yingzhuo/gosu     /bin/gosu     /usr/local/bin/gosu
 COPY --from=yingzhuo/docktool /bin/docktool /usr/local/bin/docktool
