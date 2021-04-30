@@ -1,4 +1,4 @@
-FROM alpine:3.13.2
+FROM alpine:3.13.5
 
 COPY --from=yingzhuo/gosu     /bin/gosu     /usr/local/bin/gosu
 COPY --from=yingzhuo/docktool /bin/docktool /usr/local/bin/docktool
@@ -20,5 +20,3 @@ RUN addgroup -g 1001 -S app && \
     chmod 777 /var/run && \
     chmod 777 /run && \
     rm -rf /var/cache/apk/*
-
-ENTRYPOINT ["docktool", "sleep"]
